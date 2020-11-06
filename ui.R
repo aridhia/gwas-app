@@ -91,5 +91,9 @@ navbarPage("GWAS Results Analysis",
                               plotOutput("snp_density")
                             )
                           )
-                 )
+                 ),
+                  
+                tabPanel("Help",
+                         documentation_tab()
+                         )
 )

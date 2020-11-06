@@ -3,41 +3,34 @@ documentation_tab <- function() {
            fluidPage(width = 12,
                      fluidRow(column(
                        6,
-                       h3("Survival Analysis"), 
-                       p("This mini-app allows you to perform a survival analysis. In a survival analysis, two or more groups are compared with respoect to the time of a specific event. In some cases,
-                         the event may not occur during the observation period, then the time object is called the censored time."),
-                       p("Survival analyses use the following methods:"),
-                       tags$ol(
-                         tags$li(strong("Keplan-Meier plots "), "are used to visualize the probability of survival in each of the time intervals."),
-                         tags$li(strong("Cox Proportional Hazards Regression "), "describes the effect of continuous or categorical predictors on survival, this method 
-                                 considers one or more than one covariates when considering survival of patients. This regression gives the Hazard Ratio (HR) of Experimental Vs.
-                                 Control, if the HR is less than one, the hazard decreases (favouring the experimental group)")
-                       ),
+                       h3("Genome Wide Association Studies (GWAS)"), 
+                       p("This mini-app allows you to easily visualise a GwAS. GWAS is a hypothesis-free mothod for identifying associations between genetic regions and traits
+                         (e.g. diseases). This kind of studies search for ", strong("Single-Nucleotide Polymorphisms (SNPs)"), " , which are small variations in the genetic 
+                         code. Through GWAS, it is possible to identify SNPs that occur more frequently in certain diseases"),
+                       p("GWAS use two groups of participants, cases and controls. If certain SNPs are found to be significantly more frequent in cases of a certain disease
+                         compared to controls, the SNPs could be associated with the disease or trait."),
+                       p("GWAS results are displayed in a ", strong("Manhattan plot"), "which shows the -log10(p-value) against the position in the genome. The signficace
+                         threshold for this studies is p = 5 x 10", tags$sup("-8.")),
                        h4("Mini-app layout"),
-                       p("The mini-app contains three tabs; this help tab gives you an overview of the mini-app itself."),
+                       p("The mini-app contains 4 tabs; this help tab gives you an overview of the mini-app itself."),
                        
                        h5("To use the mini-app"),
-                       p("The data being used by the app is the bladder dataset from the survimer R package, to use a different dataset you should store the 
+                       p("The data being used by the app is the HapMap dataset from the manhattanly R package, to use a different dataset you should store the 
                          csv file in the data folder" ),
                        
-                       
                        tags$ol(
-                         tags$li("The first tab is used for ", strong("Setting up the analysis."), " The user has to select the variable containing the information of 
-                                 whether the event took place or not and the time variable. It also allows to filter the dataset, the filter applied in this step will 
-                                 be used in the rest of the analyses."), 
+                         tags$li("The first tab displays an ", strong("interactive Manhattan plot"), " showing the -log10(p-value) against the position in the genome.
+                                 The red line shows the significace threshold. You can hover the moues over the SNPs to display the variant information. 
+                                 Moreover, A menu will appear in the upper-right corner of the graph, this allows to zoom in on a region of interest and export the image as a .png file"), 
                          
-                         tags$li("The second tab prints a ", strong("Table of characteristics"), 
-                                 "you have to choose the stratification variable, the variables shown in the table and whether to show the p-value or not from the
-                                 left-hand menu"),
-                         tags$li("In the third tab builds a ", strong("Keplan-Meier graph "), 
-                                 "using the variables selected in the analysis set up tab. It allows to choose the stratification variable and the slinding bar controls
-                                 the table containing the survival probability at the chosen timek"), 
-                         tags$li("Finally, the fourth tab build the ", strong("Cox Model "), "you can add variables and stratas to the model by selecting the different 
-                        variables from the left-hand menu")
-                       ),
-                       p("You can experiment with any number of combinations, selecting different outcome variables, stratification variables or adding different variables 
-                         to the Cox Model."),
-                       br()
+                         tags$li("The second tab prints ", strong("Circular and Rectangular Manhattan plots."), 
+                                 "This plots are not interactive, but they offer options to change plot parameters (e.g. zoom into one chromosome) and stetics."),
+                         tags$li("In the third tab builds a ", strong("Quantile-quantile (QQ) plot, "), 
+                                 "which are probability plots that are used to compare two probability distributions by plotting their quantiles against each other. In GWAS
+                                 studies, the QQ plot is a graphical representation of the deviation of the observed p-value against the expected p-values from a 
+                                 theoretical distribution"), 
+                         tags$li("Finally, the fourth tab build the ", strong("SNP density plot, "), "which shows the number of candidate variants in consecutive 100-kb regions")
+                       )
                      ),
                      column(
                        6,

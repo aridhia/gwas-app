@@ -15,9 +15,6 @@ function(input, output, session) {
     })
 
 
-    # When in the gwas-workspace the data is read:
-    # data_dir <- '../gwas/output/load.assoc.logistic'
-    
     # Read in data
     gwas <- HapMap %>% select (CHR, SNP, BP, P)
     gwas_cm <- HapMap %>% select(SNP, CHR, BP, P)
