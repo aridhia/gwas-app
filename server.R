@@ -40,21 +40,25 @@ function(input, output, session) {
         
         if (is.null(input$chr)){
             
-            manhattanly(gwas, snp="SNP", point_size= input$point, col=cols,
-                        suggestiveline = suggest_y,
-                        genomewideline = geno_y)
+            manhattanly(gwas, 
+                        snp="SNP", 
+                        point_size= input$point,                                # Change of point size 
+                        col=cols,                                               # Change colors of the graph
+                        suggestiveline = suggest_y,                             # Suggestive line (value or FALSE)
+                        genomewideline = geno_y)                                # Suggestive line (value or FALSE)
 
         } else {
-            manhattanly(subset(gwas, CHR %in% paste(input$chr, sep = ",")), 
+            manhattanly(subset(gwas, CHR %in% paste(input$chr, sep = ",")),     # Subset of selected chromosomes 
                         snp = "SNP",
-                        point_size = input$point,
-                        col = cols,
-                        suggestiveline = suggest_y,
-                        genomewideline = geno_y,
+                        point_size = input$point,                               # Change of point size
+                        col = cols,                                             # Change colors of the graph
+                        suggestiveline = suggest_y,                             # Suggestive line (value or FALSE)
+                        genomewideline = geno_y,                                # Significance line (value or FALSE)
                         )
         }
     })
     
+    # 2nd Tab - CIRCULAR MANHATAN PLOT --------------------------------------------------
 
     # Construct the plot if we have valid parameters
     output$manhattan_plot <- renderPlot({
@@ -72,33 +76,55 @@ function(input, output, session) {
 
             if (input$circ_type == 'outw') outward <- TRUE else outward <- FALSE
             
-            CMplot(gwas_cm,
-                   type = "p",
-                   plot.type="c",
-                   chr.labels = paste("", c(1:23), sep=""),
-                   r=100, 
-                   cir.legend=TRUE, 
-                   col=cols, 
-                   cir.band=1500, H=3000, cex=0.4, signal.cex=0.7,
-                   threshold.lty=c(1,2), threshold.col=c("red","blue"), signal.line=1, signal.col=c("red","green"), threshold=c(5e-8, 1e-5),
-                   outward=outward, cir.legend.col="black", cir.chr.h=700, chr.den.col="black", band=1,
-                    mar=c(0, 0, 0, 0),
-                   file.output=FALSE)
+            CMplot(gwas_cm,                                                     
+                   type = "p",                                                  # p = point type
+                   plot.type="c",                                               # c = circular plot
+                   chr.labels = paste("", c(1:23), sep=""),                     # chromosomes levels
+                   col=cols,                                                    # Color scheme
+                   H=6000,                                                      # Height for each circle 
+                   cex=0.4,                                                     # Point size
+                   signal.cex=0.7,                                              # Point size for significant points
+                   threshold.lty=c(1,2),                                        # type of threshold line
+                   threshold.col=c("red","blue"),                               # Color for the threshold lines
+                   signal.line=1,                                               # Thickness of the lines
+                   signal.col=c("red","green"),                                 # Color of the significant lines
+                   threshold=c(5e-8, 1e-5),                                     # Significant threshold levels
+                   outward=outward,                                             # Type of graph, outward/inward
+                   cir.legend.col="black",                                      # Color of the legend
+                   cir.chr.h=700,                                               # Width of the boundary   
+                   chr.den.col= NULL,                                           # Density plot will not be around the graph 
+                   file.output=FALSE)                                           # Not output the plot results
         
     })
     
+    # 3rd Tab - QQ Plot --------------------------------------------------
     
     output$qq_plot <- renderPlot({
         
         #qq(gwas$P)
-        CMplot(gwas_cm, plot.type="q", box=FALSE,file.output=FALSE, mar=c(2, 2, 2, 2), 
-               main=NULL, cex.lab=1, ylim=c(0, 20), col='black',
-               conf.int=input$qqplot_conf, conf.int.col=NULL, threshold.col="red", threshold.lty=2)
+        CMplot(gwas_cm, 
+               plot.type="q",                                                   # q = QQ plot 
+               file.output=FALSE,                                               # Not output the plot results
+               mar=c(2, 2, 2, 2),                                               # Margins
+               main=NULL,                                                       # Title 
+               cex.lab = 1,                                                     # Size of X/Y labels
+               ylim=c(0, 20),                                                   # Limit Y axis
+               col='black',                                                     # Color scheme
+               conf.int=input$qqplot_conf,                                      # Show confidence interval
+               conf.int.col=NULL,                                               # Color of CI
+               threshold.col="red",                                             # Color threshold
+               threshold.lty=2)                                                 # Type of threshold line
     })
     
+    # 4th Tab - SNP DENSITY --------------------------------------------------
+    
     output$snp_density <- renderPlot({
-        CMplot(gwas_cm, type="p", plot.type="d", bin.size=1e6, 
-               chr.den.col=c("darkgreen", "yellow", "red"), file.output=FALSE)
+        CMplot(gwas_cm, 
+               type="p",                                                        # p = point
+               plot.type="d",                                                   # d = density 
+               bin.size=1e6,       
+               chr.den.col=c("darkgreen", "yellow", "red"),                     # Color for the SNP density
+               file.output=FALSE)                                               # Not output the plot results
     })
     
     
