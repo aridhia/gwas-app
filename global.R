@@ -9,7 +9,6 @@ library(manhattanly)
 library(plotly)
 
 
-
 # Help tab ---------------
 
 source("./code/help_tab.R")
