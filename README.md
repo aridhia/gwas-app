@@ -2,29 +2,42 @@
 
 # Introduction to GWAS
 
-Genome-wide association study (GWAS) is a hypotheses-free method for **identifying associations between genetic regions and traits** (incl. diseases). GWAS typically **searches for small variations**, known as single-nucleotide polymorphisms (**SNPs**), that occur more frequently in people with a particular disease than in people without the disease. GWAS already has seen success at identifying SNPs related to conditions such as diabetes, Parkinson's and Crohn's disease.
+Genome-wide association study (GWAS) is a hypotheses-free method for **identifying associations between genetic regions and traits** (incl. diseases). GWAS typically **searches for small variations**, known as single-nucleotide polymorphisms (**SNPs**), that occur more frequently in people with a particular disease than those without the disease.
 
-# General Approach to GWAS
+Researchers use **two groups of participants**: people with the disease being studied **(case group)** and similar people without the disease **(control group)**. Strategically selected SNPs are then compared between groups. If certain variations are found to be significantly more frequent in people with the disease compared to people without the disease, the **variations are said to be associated with the disease**.
 
-Researchers use **two groups of participants**: people with the disease being studied **(case group)** and similar people without the disease **(control group)**. **DNA is obtained from each participant** by scanning their blood sample/cell on automated laboratory machines. The machines survey each participant’s genome for strategically selected **markers of genetic variation (SNPs)**. If certain variations are found to be significantly more frequent in people with the disease compared to people without the disease, the **variations are said to be associated with the disease**.
+Results are typically displayed in a **Manhattan plot** with -log10(p-value) plotted against the position in the genome. Two lines are added to indicate the genome-wide **significance threshold** (p=5.0×10−8) and the cut-off level for selecting SNPs for replication study (p=1.0×10−5). 
 
-The SNPs associated with the disease are **identified by testing for statistical significance between cases and controls**. Results are typically displayed in a **Manhattan plot** with -log10(p-value) plotted against the position in the genome. Two lines are added to indicate the genome-wide **significance threshold** (p=5.0×10−8) and the cut-off level for selecting single-nucleotide polymorphisms for replication study (p=1.0×10−5). An example Manhattan plot is illustrated below.
+# About GWAS App
+
+The app has five tabs:
+1. **An interactive Manhattan plot** 
+
+2. **Circular Manhattan plot**: 
+
+3. **Quantile-quantile (QQ) plots**: 
+
+4. **SNP density plots**:
+
+5. **Help**:
 
 
-# Visualizing Results
+# Checkout and run
 
-A Shiny app was created for visualizing the GWAS results. 
+You can clone this repository by using the commands:
 
-The app can be run from the R console:
 ```
-library(shiny)
-runApp("app.R")
+git clone https://github.com/aridhia/gwas-app
 ```
 
-The app has four tabs:
-1. **An interactive Manhattan plot** showing the the negative logarithm of the p-value plotted against the position in the genome. The red line represents a genome-wide significance threshold, thus SNPs above it will be associated with the Late Onset Alzheimer's Disease. You can hover your mouse over the SNPs to display the variant information. 
+From R studio or an R console, you can run the app:
+```
+runApp()
+```
 
-2. **Circular and Rectangular Manhattan plots**: not interactive, more controls for changing the plot parameters as well as functionality for zooming into a single chromosome. 
-3. **Quantile-quantile (QQ) plots**, showing the observed vs expected p value. 
+# Workspace deployment
 
-4. **SNP density plots**. 
+1. Create a new mini-app in the workspace called "gwas-app"
+2. Delete the new folder called "gwas-app"
+3. Zip all the files in the repo 
+4. Upload the zip file to the workspace and unzip it
