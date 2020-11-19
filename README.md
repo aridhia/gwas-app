@@ -12,19 +12,15 @@ Results are typically displayed in a **Manhattan plot** with -log10(p-value) plo
 
 The app has five tabs:
 1. **An interactive Manhattan plot** 
-
-2. **Circular Manhattan plot**: 
-
-3. **Quantile-quantile (QQ) plots**: 
-
-4. **SNP density plots**:
-
-5. **Help**:
+2. **Circular Manhattan plot** 
+3. **Quantile-quantile (QQ) plot**
+4. **SNP density plot**
+5. **Help**
 
 
 # Checkout and run
 
-You can clone this repository by using the commands:
+You can clone this repository by using the command:
 
 ```
 git clone https://github.com/aridhia/gwas-app
@@ -37,7 +33,6 @@ runApp()
 
 # Workspace deployment
 
-1. Create a new mini-app in the workspace called "gwas-app"
-2. Delete the new folder called "gwas-app"
-3. Zip all the files in the repo 
-4. Upload the zip file to the workspace and unzip it
+1. Create a new mini-app in the workspace called "gwas-app" and delete the folder created for it
+3. Zip all the files in this GitHub repo or download the repo as a zip file 
+4. Upload the zip file to the workspace and unzip inside a folder called "gwas-app"
