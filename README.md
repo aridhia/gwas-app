@@ -11,10 +11,14 @@ Results are typically displayed in a **Manhattan plot** with -log10(p-value) plo
 # About GWAS App
 
 The app has five tabs:
-1. **An interactive Manhattan plot** 
+1. **An interactive Manhattan plot**
+
 2. **Circular Manhattan plot** 
+
 3. **Quantile-quantile (QQ) plot**
+
 4. **SNP density plot**
+
 5. **Help**
 
 

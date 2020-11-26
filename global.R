@@ -1,5 +1,9 @@
 
-# PACKAGES ------------------
+# Install packages if necessary -----
+
+source("dependencies.R")
+
+# Load Packages ------------------
 
 library(shiny)
 library(qqman)
@@ -9,6 +13,9 @@ library(manhattanly)
 library(plotly)
 
 
-# Help tab ---------------
+# Source all the files in the code folder ---------------
 
-source("./code/help_tab.R")
+for (file in list.files("code", full.names = TRUE)){
+  source(file, local = TRUE)
+}
+

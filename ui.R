@@ -169,6 +169,6 @@ navbarPage(
 
     # Function with the help tab
 
-    documentation_tab()
+    documentation_tab(),
   )
 )
