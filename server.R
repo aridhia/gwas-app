@@ -16,8 +16,8 @@ function(input, output, session) {
 
 
     # Read in data ------------------------------------------------------------------------
-    gwas <- HapMap %>% select (CHR, SNP, BP, P)
-    gwas_cm <- HapMap %>% select(SNP, CHR, BP, P)
+    gwas <- data %>% select (CHR, SNP, BP, P)
+    gwas_cm <- data %>% select(SNP, CHR, BP, P)
     
     
     # 1st Tab - INTERACTIVE MANHATAN PLOT --------------------------------------------------

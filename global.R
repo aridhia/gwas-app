@@ -12,6 +12,10 @@ library(CMplot)
 library(manhattanly)
 library(plotly)
 
+# Import data
+
+data <- read.csv("./data/hapmap.csv")
+
 
 # Source all the files in the code folder ---------------
 
