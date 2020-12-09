@@ -21,6 +21,18 @@ The app has five tabs:
 
 5. **Help**
 
+This R Shiny mini-app reads the files allocated in the `data` folder, you can add your own data and use it in the app. The app expects a csv derived from the PLINK .map file, this file should contain the following columns:
+
+1. CHR - chromosome number (`integer`)
+2. BP - genomic base-pair position (`integer`)
+3. P - p-value (`integer`)
+4. SNP - snp identifier (`character`)
+5. ZSCORE - z-score (`numeric`)
+6. EFFECTSIZE - effect size (`numeric`)
+7. GENE - nearest gene to SNP (`character`)
+8. DISTANCE - distance between the SNP and GENE (`integer`)
+
+The example data is the R example dataset HapMap, from the `manhattanly` packages.
 
 # Checkout and run
 
