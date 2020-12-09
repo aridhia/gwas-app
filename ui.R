@@ -9,6 +9,7 @@ navbarPage(
 
   # 1st Tab - INTERACTIVE MANHATAN PLOT --------------------------------------------------
 
+  
   tabPanel(
     "Interactive Manhattan Plot",
 
@@ -17,6 +18,14 @@ navbarPage(
     sidebarLayout(
       sidebarPanel(
 
+        # Select data
+        
+        selectInput(
+          inputId = "choose_data",
+          label = "Choose a dataset",
+          choices = tables
+        ),
+        
         # Select color scheme
 
         selectInput("color", "Choose colour scheme:",

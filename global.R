@@ -23,3 +23,7 @@ for (file in list.files("code", full.names = TRUE)){
   source(file, local = TRUE)
 }
 
+
+# File list in data folder
+
+tables <- list.files(path = "./data", full.names = FALSE)

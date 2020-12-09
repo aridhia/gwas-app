@@ -14,10 +14,22 @@ function(input, output, session) {
         cat(".")
     })
 
-
+    data <- reactive({
+        if (input$choose_data == ""){
+            return(NULL)
+        }
+        
+        file <- file.path("data", paste(input$choose_data))
+        read.csv(file)
+    })
+    
     # Read in data ------------------------------------------------------------------------
-    gwas <- data %>% select (CHR, SNP, BP, P)
-    gwas_cm <- data %>% select(SNP, CHR, BP, P)
+    gwas <- reactive({
+        data() %>% select (CHR, SNP, BP, P)
+        })
+    gwas_cm <- reactive({
+        data() %>% select(SNP, CHR, BP, P)
+        })
     
     
     # 1st Tab - INTERACTIVE MANHATAN PLOT --------------------------------------------------
@@ -40,7 +52,7 @@ function(input, output, session) {
         
         if (is.null(input$chr)){
             
-            manhattanly(gwas, 
+            manhattanly(gwas(), 
                         snp="SNP", 
                         point_size= input$point,                                # Change of point size 
                         col=cols,                                               # Change colors of the graph
@@ -48,7 +60,7 @@ function(input, output, session) {
                         genomewideline = geno_y)                                # Suggestive line (value or FALSE)
 
         } else {
-            manhattanly(subset(gwas, CHR %in% paste(input$chr, sep = ",")),     # Subset of selected chromosomes 
+            manhattanly(subset(gwas(), CHR %in% paste(input$chr, sep = ",")),     # Subset of selected chromosomes 
                         snp = "SNP",
                         point_size = input$point,                               # Change of point size
                         col = cols,                                             # Change colors of the graph
@@ -76,7 +88,7 @@ function(input, output, session) {
 
             if (input$circ_type == 'outw') outward <- TRUE else outward <- FALSE
             
-            CMplot(gwas_cm,                                                     
+            CMplot(gwas_cm(),                                                     
                    type = "p",                                                  # p = point type
                    plot.type="c",                                               # c = circular plot
                    chr.labels = paste("", c(1:23), sep=""),                     # chromosomes levels
@@ -102,7 +114,7 @@ function(input, output, session) {
     output$qq_plot <- renderPlot({
         
         #qq(gwas$P)
-        CMplot(gwas_cm, 
+        CMplot(gwas_cm(), 
                plot.type="q",                                                   # q = QQ plot 
                file.output=FALSE,                                               # Not output the plot results
                mar=c(2, 2, 2, 2),                                               # Margins
@@ -119,7 +131,7 @@ function(input, output, session) {
     # 4th Tab - SNP DENSITY --------------------------------------------------
     
     output$snp_density <- renderPlot({
-        CMplot(gwas_cm, 
+        CMplot(gwas_cm(), 
                type="p",                                                        # p = point
                plot.type="d",                                                   # d = density 
                bin.size=1e6,       
