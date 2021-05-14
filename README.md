@@ -54,3 +54,5 @@ runApp()
 3. Upload the zip file to the workspace and unzip inside a folder called "gwas-app"
 4. Run the `dependencies.R` script to install all the packages the app requires
 5. Run the app in your workspace
+
+For more information visit https://knowledgebase.aridhia.io/article/how-to-upload-your-mini-app/
