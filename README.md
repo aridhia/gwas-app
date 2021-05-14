@@ -50,5 +50,7 @@ runApp()
 # Workspace deployment
 
 1. Create a new mini-app in the workspace called "gwas-app" and delete the folder created for it
-3. Zip all the files in this GitHub repo or download the repo as a zip file 
-4. Upload the zip file to the workspace and unzip inside a folder called "gwas-app"
+2. Download this GitHub repo as a ZIP file, or clone it and zip all the files
+3. Upload the zip file to the workspace and unzip inside a folder called "gwas-app"
+4. Run the `dependencies.R` script to install all the packages the app requires
+5. Run the app in your workspace
