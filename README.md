@@ -42,10 +42,7 @@ You can clone this repository by using the command:
 git clone https://github.com/aridhia/gwas-app
 ```
 
-From R studio or an R console, you can run the app:
-```
-runApp()
-```
+Open the .Rproj file in RStudio, source the script `dependencies.R` to install all the packages required by the app, and run `runApp()` to start the app.
 
 # Workspace deployment
 
