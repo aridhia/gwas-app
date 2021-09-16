@@ -1,8 +1,4 @@
 
-# Install packages if necessary -----
-
-source("dependencies.R")
-
 # Load Packages ------------------
 
 library(shiny)
