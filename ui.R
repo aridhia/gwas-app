@@ -5,8 +5,8 @@
 
 
 navbarPage(
-  "GWAS Results Analysis",
-
+  title = "GWAS Results Analysis",
+  windowTitle = "GWAS App",
   # 1st Tab - INTERACTIVE MANHATAN PLOT --------------------------------------------------
 
   
