@@ -1,6 +1,6 @@
 
 
-## Introduction to GWAS
+### Introduction to GWAS
 
 Genome-wide association study (GWAS) is a hypotheses-free method for **identifying associations between genetic regions and traits** (incl. diseases). GWAS typically **searches for small variations**, known as single-nucleotide polymorphisms (**SNPs**), that occur more frequently in people with a particular disease than those without the disease.
 
